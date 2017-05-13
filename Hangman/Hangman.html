@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Power Rangers Hangman</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+<body id="game">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center"><img src="https://vignette2.wikia.nocookie.net/logopedia/images/0/07/Power_rangers_logo.png/revision/latest?cb=20141217191319" alt="Power Rangers logo" style="width:878.46px;height:294.03px;"></h1>
+            <h1 class="text-center"><strong>Hangman</strong></h1>
+            <hr>
+            <div class="text-center">
+              <button class="btn btn-default btn-xs theme-pause"><span class="glyphicon glyphicon-pause"></span></button>
+              <button class="btn btn-success btn-xs theme-play"><span class="glyphicon glyphicon-play"></span></button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://images.moviepilot.com/image/upload/c_fill,h_470,q_auto:good,w_620/kydzmiisv5ycnzkvx338.jpg" alt="White Ranger sitting down" style="margin-right:10px; padding-bottom:20px;">
+        </div>
+        <div class="col-lg-5">    
+            <div class="panel panel-default" style="position:fixed; bottom:10px;">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Choose Wisely</strong></h3>
+                    <div id="buttons" style="position: center;"></div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+
+            var themeSong = document.createElement("audio");
+            themeSong.setAttribute("src", "Assets/ThemeSong.mp3");
+
+            $(".theme-play").on("click", function() {
+                themeSong.play();
+            });
+
+            $(".theme-pause").on("click", function() {
+                themeSong.pause();
+            });
+
+            var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
+            for (var index = 0; index < letters.length; index++) {
+                var element = letters[index];
+                var letterBtn = $("<button>")
+                   letterBtn.addClass("letter-button", "letter", "letter-button-color");
+                   letterBtn.attr("data-letter", letters[index]);
+                   letterBtn.text(letters[index]);
+                   letterBtn.appendTo("#buttons"); 
+            }
+        });
+    </script>
+    
+</body>
+</html>
